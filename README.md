@@ -1,14 +1,35 @@
-####  Get code
-
+# Installation Guide
+## Install NPM
 ```
-> git clone https://github.com/vuhaininh/github-management.git
-> cd github-management
-> npm install
-> npm start
+https://nodejs.org/en/
 ```
 
-#### NRun
+## Get the code
+Open command promp and run command line
 ```
-> npm install
-> npm start
+git clone https://github.com/vuhaininh/github-management.git
+
 ```
+## Run the app in local
+Go to the app folder
+```
+cd github-management
+
+```
+Install dependencies
+```
+npm install
+
+```
+Start development server
+```
+npm start
+
+```
+ Open http://localhost:8080 to view it in the browser.
+
+ Run test
+ (Test cases are written in test folder)
+ ```
+ npm run test:watch
+ ```
