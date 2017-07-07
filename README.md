@@ -1,8 +1,8 @@
 ####  Get code
 
 ```
-> git clone git@github.com:vuhaininh/Redux-boilerplate.git
-> cd Redux-boilerplate
+> git clone https://github.com/vuhaininh/github-management.git
+> cd github-management
 > npm install
 > npm start
 ```

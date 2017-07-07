@@ -1,0 +1,15 @@
+export const ROOT_URL = 'https://api.github.com';
+export const FETCH_REPOS = 'FETCH_REPOS';
+export const ERROR_EXCEED_LIMIT = 'ERROR_EXCEED_LIMIT';
+export const ERROR_403_MESSAGE = 'API rate limit exceeded with this IP. Please try again in few hours';
+export const ERROR_INPUT_MESSAGE = 'Please Enter Organization Name to get info';
+export const ERROR_NOT_FOUND = 'ERROR_NOT_FOUND';
+export const ERROR_404_MESSAGE = 'Cannot find this organization name. Please enter correct name';
+export const ERROR_INVALID_TOKEN_MESSAGE = 'Invalid! Please check again the Access token or Organization name';
+export const ERROR_INVALID_TOKEN = 'ERROR_INVALID_TOKEN';
+export const ERROR_GENERAL = 'ERROR_GENERAL';
+export const ERROR_GENERAL_MESSAGE = 'Cannot fetch data, please check your input or try again later';
+export const ADD_FILTER_ELEMENT = 'ADD_FILTER_ELEMENT';
+export const REMOVE_FILTER_ELEMENT = 'REMOVE_FILTER_ELEMENT';
+export const SELECT_ALL = 'SELECT_ALL';
+export const NO_REPO_MESSAGE = 'There is no repository in this organization';
