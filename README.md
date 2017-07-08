@@ -31,7 +31,9 @@ npm start
 
 ```
  Open http://localhost:8080 to view it in the browser.
+ 
  Enter organization name such as "rails" or "google" to search repositories
+ 
  Run test
  (Test cases are written in test folder)
  ```
