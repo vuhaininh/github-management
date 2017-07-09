@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SearchBar from './search_bar';
 import RepoList from './repo_list';
 import Filter from './filter';
+import '../style/style.css';
 export default class App extends Component {
   /* App component should have a search bar, filter bar and repository list.
      In case there is no repository, filter will be empty
