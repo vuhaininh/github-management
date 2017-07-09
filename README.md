@@ -1,6 +1,8 @@
 # Installation Guide
 This is application to view Github repositories of organizations. (such as rails, google ... )
 
+Online Demo link: https://vuhaininh.github.io/github-management/
+
 Application runs well on Chrome, Firefox, Microsoft Edge. I do not have Mac so cannot test with Safari (Apple does not support Safari in Windows for years).
 
 I do not have paid organization git hub so I ignored the toggle/filter private/public part
