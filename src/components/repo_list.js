@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import RepoListItem from './repo_list_item';
-import {ERROR_GENERAL,CODE_EXCEED_LIMIT,ERROR_INPUT_MESSAGE,NO_REPO_MESSAGE} from '../constants/constants';
 import SelectedRepos  from '../selectors/selected_repos';
 
 class RepoList extends Component{
