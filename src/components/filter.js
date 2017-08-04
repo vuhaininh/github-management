@@ -9,7 +9,7 @@ class Filter extends Component{
   handleSelect(event){
     const target = event.target;
     const value = target.value;
-    if(value == 'All'){
+    if(value === 'All'){
       target.checked ? this.props.selectAll(this.props.languages) : this.props.selectAll([]);
     }
     else{
@@ -33,7 +33,7 @@ class Filter extends Component{
     );
   }
 
- // Render Filter components 
+ // Render Filter components
   render(){
     if(this.props.languages){
       return(

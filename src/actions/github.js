@@ -20,7 +20,7 @@ export function fetchOrgRepos(orgData){
 
       return Promise.all(repos.map( (repo) => {
           // Get Info of branches of each repository
-          var branchRequestUrl = `${constants.ROOT_URL}/repos/${orgName}/${repo.name}/branches${access_token}`; //request URL
+          const branchRequestUrl = `${constants.ROOT_URL}/repos/${orgName}/${repo.name}/branches${access_token}`; //request URL
           return axios.get(branchRequestUrl); //axios request
         })
       );
