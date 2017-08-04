@@ -1,26 +1,39 @@
+var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
-  entry: [
-    './src/index.js'
-  ],
-  output: {
-    path: __dirname,
-    publicPath: '/',
-    filename: 'bundle.js'
+  entry: './src/index.js',
+  output : {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname,'dist')
   },
-  module: {
-    loaders: [{
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['react', 'es2015', 'stage-1']
+  module:{
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader'
+        }
+      },
+      {
+        test: /\.scss|\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader','sass-loader']
+        })
       }
-    }]
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
+    ]
   },
   devServer: {
     historyApiFallback: true,
     contentBase: './'
   }
+  ,
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
+    }),
+    new ExtractTextPlugin('style.css')
+  ]
 };
