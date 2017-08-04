@@ -13,7 +13,8 @@ export function fetchOrgRepos(orgData){
   const request = axios.get(requestUrl);
   var repos = {};
   return (dispatch) => {
-    request.then( (response) => {
+    request
+    .then( (response) => {
       // Fetch successfully
       repos = response.data; // Fetched Repositories
 
@@ -22,8 +23,9 @@ export function fetchOrgRepos(orgData){
           var branchRequestUrl = `${constants.ROOT_URL}/repos/${orgName}/${repo.name}/branches${access_token}`; //request URL
           return axios.get(branchRequestUrl); //axios request
         })
-      )
-    }). then( (branch) => {
+      );
+    })
+    . then( (branch) => {
           //Update Repository Info based on Fetched Branches Info
           var updatedRepos = repos.map( (repo,i) => {
               repo.branches = branch[i].data;
@@ -35,7 +37,8 @@ export function fetchOrgRepos(orgData){
           dispatch({type: constants.FETCH_REPOS, payload: updatedRepos}); // Update Repositories List
           dispatch({type: constants.SELECT_ALL, payload:[]}); // Filter, default is selected all, no filter
         }
-    ).catch( (error) => {
+    )
+    .catch( (error) => {
       // catch errors while fetching data: authorization error, not found, exceed limit..etc
       // update state to infor to users
         switch(error.response.status){
