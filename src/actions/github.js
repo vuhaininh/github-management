@@ -11,18 +11,19 @@ export function fetchOrgRepos(orgData){
 
   //Create Request By AXIOS
   const request = axios.get(requestUrl);
-
+  var repos = {};
   return (dispatch) => {
     request.then( (response) => {
       // Fetch successfully
-      var repos = response.data; // Fetched Repositories
+      repos = response.data; // Fetched Repositories
 
-      Promise.all(repos.map( (repo) => {
+      return Promise.all(repos.map( (repo) => {
           // Get Info of branches of each repository
           var branchRequestUrl = `${constants.ROOT_URL}/repos/${orgName}/${repo.name}/branches${access_token}`; //request URL
           return axios.get(branchRequestUrl); //axios request
         })
-      ).then((branch) => {
+      )
+    }). then( (branch) => {
           //Update Repository Info based on Fetched Branches Info
           var updatedRepos = repos.map( (repo,i) => {
               repo.branches = branch[i].data;
@@ -33,12 +34,8 @@ export function fetchOrgRepos(orgData){
           //Dispatch actions to Reducers to get updated state of Redux Store
           dispatch({type: constants.FETCH_REPOS, payload: updatedRepos}); // Update Repositories List
           dispatch({type: constants.SELECT_ALL, payload:[]}); // Filter, default is selected all, no filter
-        }).catch( (error) => {
-          // catch error  in case cannot fetch Branch Info (ie: private repos), dispath to Reducers to
-          // update state to infor to users
-           dispatch({type: constants.ERROR_GENERAL, payload: error});
-        });
-    }).catch( (error) => {
+        }
+    ).catch( (error) => {
       // catch errors while fetching data: authorization error, not found, exceed limit..etc
       // update state to infor to users
         switch(error.response.status){
