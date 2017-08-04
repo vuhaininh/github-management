@@ -35,9 +35,10 @@ npm start
 
 ```
  Open http://localhost:8080 to view it in the browser.
- 
- Enter organization name such as "rails" or "google" to search repositories
- 
+
+ Enter organization name such as "rails" or "google" to search repositories.
+ (Github api has limited access rate so it is better to use small organization name like "vhn-infotech" or create access token to have more limit rate)
+
  Run test
  (Test cases are written in test folder)
  ```
