@@ -9,7 +9,7 @@ class RepoList extends Component{
     const repos = this.props.repos; // Get Repo list from props
 
     // Render each repository in RepoListItem component
-    if(repos.unload === undefined){
+    if(!repos.unload){
       return(
         repos.map( (repo) => {
           return(<RepoListItem key={repo.id} repo = {repo} />)
