@@ -3,15 +3,12 @@ import React from 'react';
 const RepoListItem = (props) => {
   const repo = props.repo;
 
-  // Render Branches Names of Repository into LI
   function renderBranch(branches){
     return branches.map( (branch) => {
       return <li className="list-group-item list-group-item-warning repo-branch" key={branch.name}>{branch.name}</li>
     })
   }
 
-  // Render Information about Repository: Name, Link, Branches, Private, Language
-  // Use data-toggle data-target, and collapse class to implement expand feature
   return(
     <div className="group-item bg-info repo-item">
       <h4>Name: {repo.name}</h4>
