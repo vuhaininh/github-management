@@ -3,10 +3,9 @@ export default function(state =  {unload: true, message:constants.ERROR_INPUT_ME
   switch(action.type){
    case constants.FETCH_REPOS:
       if(action.payload.length == 0)
-        return {unload:true, message:constants.NO_REPO_MESSAGE}; // If organization does not have Repo
+        return {unload:true, message:constants.NO_REPO_MESSAGE}; 
       else
-        return action.payload; // Return Repository list
-   // Catch different error types with Message
+        return action.payload; 
    case constants.ERROR_GENERAL:
     return {unload:true, message:constants.ERROR_GENERAL_MESSAGE};
    case constants.ERROR_INVALID_TOKEN:
