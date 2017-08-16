@@ -4,11 +4,10 @@ import RepoListItem from './repo_list_item';
 import SelectedRepos  from '../selectors/selected_repos';
 
 class RepoList extends Component{
-  // Render Repository List
+  
   renderRepos(){
-    const repos = this.props.repos; // Get Repo list from props
-
-    // Render each repository in RepoListItem component
+    const repos = this.props.repos; 
+    
     if(!repos.unload){
       return(
         repos.map( (repo) => {
@@ -16,7 +15,6 @@ class RepoList extends Component{
         })
       );
     }
-    // If repositories are not loaded, show message
     else{
       return <div className="error text-danger">{repos.message}</div>
     }
@@ -39,4 +37,4 @@ class RepoList extends Component{
 function mapStateToProps(state){
   return {repos: SelectedRepos(state)};
 }
-export default connect(mapStateToProps)(RepoList); // Connect to Redux store
+export default connect(mapStateToProps)(RepoList); 
