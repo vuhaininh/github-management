@@ -25,10 +25,10 @@ class SearchBar extends Component {
       org: "",
       token: ""
     });
-    this.props.fetchOrgRepos(this.state); // Dispatch function to get Repositories of Organization
+    this.props.fetchOrgRepos(this.state); 
   }
   render(){
-    // Form to Input information: Organization and Access Token 
+ 
     return(
       <div className="search-bar">
         <form className="form-inline" onSubmit={this.handleSubmit.bind(this)} >
