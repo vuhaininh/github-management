@@ -2,45 +2,38 @@ import * as constants from '../constants/constants';
 import axios from 'axios';
 import _ from 'lodash';
 export function fetchOrgRepos(orgData){
-  // Fetch Repositories based on input Info
-  const orgName = orgData.org; // Organization Name
-  const token = orgData.token.trim(); // Access Token
-  //Create Request URL
+  const orgName = orgData.org; 
+  const token = orgData.token.trim();
   const access_token = (token==''?'':`?access_token=${token}`)
   const requestUrl= `${constants.ROOT_URL}/orgs/${orgName}/repos${access_token}`;
 
-  //Create Request By AXIOS
   const request = axios.get(requestUrl);
   var repos = {};
   return (dispatch) => {
     request
     .then( (response) => {
-      // Fetch successfully
-      repos = response.data; // Fetched Repositories
+      repos = response.data; 
 
       return Promise.all(repos.map( (repo) => {
-          // Get Info of branches of each repository
-          const branchRequestUrl = `${constants.ROOT_URL}/repos/${orgName}/${repo.name}/branches${access_token}`; //request URL
-          return axios.get(branchRequestUrl); //axios request
+          const branchRequestUrl = `${constants.ROOT_URL}/repos/${orgName}/${repo.name}/branches${access_token}`; 
+          return axios.get(branchRequestUrl);
         })
       );
     })
     . then( (branch) => {
-          //Update Repository Info based on Fetched Branches Info
           var updatedRepos = repos.map( (repo,i) => {
               repo.branches = branch[i].data;
               if(repo.language == null)
                 repo.language = 'Unknown'
               return repo;
           })
-          //Dispatch actions to Reducers to get updated state of Redux Store
-          dispatch({type: constants.FETCH_REPOS, payload: updatedRepos}); // Update Repositories List
-          dispatch({type: constants.SELECT_ALL, payload:[]}); // Filter, default is selected all, no filter
+          dispatch({type: constants.FETCH_REPOS, payload: updatedRepos}); 
+          dispatch({type: constants.SELECT_ALL, payload:[]}); 
         }
     )
     .catch( (error) => {
       // catch errors while fetching data: authorization error, not found, exceed limit..etc
-      // update state to infor to users
+
         switch(error.response.status){
           case 401:
             dispatch({type: constants.ERROR_INVALID_TOKEN, payload: error});
@@ -59,8 +52,7 @@ export function fetchOrgRepos(orgData){
   };
 }
 
-// Update Filter List
-// Add new language to filter
+
 export function addFilterElement(data){
   return {
     type: constants.ADD_FILTER_ELEMENT,
@@ -68,7 +60,6 @@ export function addFilterElement(data){
   }
 }
 
-// Remove language to filter
 export function removeFilterElement(data){
   return {
     type: constants.REMOVE_FILTER_ELEMENT,
@@ -76,7 +67,7 @@ export function removeFilterElement(data){
   }
 }
 
-// Select All languages to filter
+
 export function selectAll(data){
   return {
     type: constants.SELECT_ALL,
