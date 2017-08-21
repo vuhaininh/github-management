@@ -8,7 +8,7 @@ export function fetchOrgRepos(orgData){
   const requestUrl= `${constants.ROOT_URL}/orgs/${orgName}/repos${access_token}`;
 
   const request = axios.get(requestUrl);
-  var repos = {};
+  let repos = {};
   return (dispatch) => {
     request
     .then( (response) => {
