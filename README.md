@@ -1,5 +1,5 @@
 # Installation Guide
-This is application to view Github repositories of organizations. (such as rails, google ... )
+This is application to view Github repositories of organizations. (such as rails, google .. )
 
 Online Demo link: https://vuhaininh.github.io/github-management/
 
